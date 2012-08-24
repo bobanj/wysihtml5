@@ -152,9 +152,10 @@
       textareaElement.setAttribute("placeholder", originalPlaceholder);
     }
   
+    // For Qype Only Ipad Resize
     // When copying styles, we only get the computed style which is never returned in percent unit
     // Therefore we've to recalculate style onresize
-    if (!wysihtml5.browser.hasCurrentStyleProperty()) {
+    if (false && !wysihtml5.browser.hasCurrentStyleProperty()) {
       var winObserver = dom.observe(win, "resize", function() {
         // Remove event listener if composer doesn't exist anymore
         if (!dom.contains(document.documentElement, that.iframe)) {
@@ -174,7 +175,7 @@
         textareaElement.style.display = originalTextareaDisplayStyle;
       });
     }
-  
+
     // --------- Sync focus/blur styles ---------
     this.parent.observe("focus:composer", function() {
       dom.copyStyles(boxFormattingStyles) .from(that.focusStylesHost).to(that.iframe);
